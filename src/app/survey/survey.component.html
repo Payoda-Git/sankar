@@ -1,0 +1,82 @@
+<div class="card mt-4">
+	<h4 class="card-header">Your Feed back</h4>
+	<div class="card-body">
+		<div id="survey">
+			<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+				<div class="form-row">
+					<div class="form-group col-5">
+						<label>Name</label>
+						<input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+						<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+							<div *ngIf="f.name.errors.required">First Name is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+					<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+						<div *ngIf="f.email.errors.required">Email is required</div>
+						<div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col">
+						<label>Phone Number</label>
+						<input type="tel" formControlName="phoneNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" />
+						<div *ngIf="submitted && f.phoneNumber.errors" class="invalid-feedback">
+							<div *ngIf="f.phoneNumber.errors.required">Phone Number is required</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Product Name</label>
+					<input type="text" formControlName="productName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.productName.errors }" />
+					<div *ngIf="submitted && f.productName.errors" class="invalid-feedback">
+						<div *ngIf="f.productName.errors.required">Product Name is required</div>
+
+					</div>
+				</div>
+				<div class="form-group">
+					<label>Performance</label>
+					<div class="custom-control custom-radio">
+						<input id="excellent" type="radio" class="custom-control-input" value="Excellent" name="performance" formControlName="performance">
+						<label class="custom-control-label" for="excellent">Excellent</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="good" type="radio" class="custom-control-input" value="Good" name="performance" formControlName="performance">
+						<label class="custom-control-label" for="good">Good</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="average" type="radio" class="custom-control-input" value="Average" name="performance" formControlName="performance">
+						<label class="custom-control-label" for="average">Average</label>
+					</div>
+					<div class="custom-control custom-radio">
+						<input id="bad" type="radio" class="custom-control-input" value="Bad" name="performance" formControlName="performance">
+						<label class="custom-control-label" for="bad">Bad</label>
+					</div>
+				</div>
+
+				<div class="form-group col">
+					<label>Product used since(in Months)</label>				   
+					<select formControlName="used" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                        <option value="within 2 months">1-2</option>
+                        <option value="within 6 months">2-6</option>
+                        <option value="within a year">6-12</option>
+                        <option value="within 5 years">24-60</option>
+                        <option value="Greater than 5 years">Above 60</option>
+                    </select>
+
+					<div *ngIf="submitted && f.used.errors" class="invalid-feedback">
+						<div *ngIf="f.used.errors.required">Product Used is required</div>
+					</div>
+				</div>
+
+				<div class="text-center">
+					<button class="btn btn-primary mr-1">Submit</button>
+					<button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
